@@ -1,4 +1,4 @@
-name: ubuntu20
+name: ubuntu22
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
     
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ljonya/ubuntu-20
+  IMAGE_NAME: ljonya/ubuntu-22
 jobs:
   ubuntu-20:
     runs-on: ubuntu-22.04
@@ -27,7 +27,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with: 
-          context: ./ubuntu-20
+          context: ./ubuntu-22
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
