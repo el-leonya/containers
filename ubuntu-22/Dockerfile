@@ -4,6 +4,7 @@ FROM ubuntu:22.04
 ARG TZ=Russia/Moscow
 ARG DEBIAN_FRONTEND=noninteractive
 ARG UID=1020
+ARG LOCALE=ru_RU
 
 # prapare
 USER root
@@ -17,7 +18,11 @@ RUN apt-get install -y gawk wget git diffstat unzip \
     python3-subunit mesa-common-dev zstd liblz4-tool
 
 # packages for building
-RUN apt-get install -y repo
+RUN apt-get install -y repo locales
+
+# locale setup
+RUN locale-gen ${LOCALE}.UTF-8
+ENV LANG ${LOCALE}.UTF-8
 
 # setup user
 RUN adduser --disabled-password --gecos '' -u ${UID} dev

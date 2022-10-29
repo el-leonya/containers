@@ -33,3 +33,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             TZ=Russia/Moscow
+            LOCALE=ru_RU
