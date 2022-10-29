@@ -21,10 +21,11 @@ RUN apt-get install -y gawk wget git diffstat unzip \
 RUN apt-get install -y repo locales
 
 # locale setup
+RUN apt-get install -y locales
 RUN locale-gen ${LOCALE}.UTF-8
 ENV LANG ${LOCALE}.UTF-8
 
-# setup user
+# user setup
 RUN adduser --disabled-password --gecos '' -u ${UID} dev
 USER dev
 WORKDIR /home/dev
