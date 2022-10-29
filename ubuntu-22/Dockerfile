@@ -6,10 +6,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG UID=1020
 ARG LOCALE=ru_RU
 
-# locale setup
-RUN locale-gen ${LOCALE}.UTF-8
-ENV LANG ${LOCALE}.UTF-8
-
 # prapare
 USER root
 RUN apt-get update && apt-get install -y apt-utils
@@ -22,7 +18,11 @@ RUN apt-get install -y gawk wget git diffstat unzip \
     python3-subunit mesa-common-dev zstd liblz4-tool
 
 # packages for building
-RUN apt-get install -y repo
+RUN apt-get install -y repo locales
+
+# locale setup
+RUN locale-gen ${LOCALE}.UTF-8
+ENV LANG ${LOCALE}.UTF-8
 
 # setup user
 RUN adduser --disabled-password --gecos '' -u ${UID} dev
