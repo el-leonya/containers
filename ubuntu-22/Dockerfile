@@ -4,6 +4,11 @@ FROM ubuntu:22.04
 ARG TZ=Russia/Moscow
 ARG DEBIAN_FRONTEND=noninteractive
 ARG UID=1020
+ARG LOCALE=ru_RU
+
+# locale setup
+RUN locale-gen ${LOCALE}.UTF-8
+ENV LANG ${LOCALE}.UTF-8
 
 # prapare
 USER root
