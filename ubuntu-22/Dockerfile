@@ -25,7 +25,7 @@ RUN apt install -y gawk wget git diffstat unzip \
 # packages for building
 RUN apt install -y repo
 
-# setup user
+# user setup
 RUN adduser --disabled-password --gecos '' -u ${UID} dev
 USER dev
 WORKDIR /home/dev
