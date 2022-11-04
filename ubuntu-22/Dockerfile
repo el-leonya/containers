@@ -4,7 +4,7 @@ FROM ubuntu:22.04
 ARG TZ=Russia/Moscow
 ARG DEBIAN_FRONTEND=noninteractive
 ARG UID=1020
-ARG LOCALE=ru_RU
+ARG LOCALE=en_US
 
 # prapare
 USER root
