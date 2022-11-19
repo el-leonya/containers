@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 # args
 ARG TZ=Russia/Moscow
 ARG DEBIAN_FRONTEND=noninteractive
-ARG UID=1020
+ARG UID=1000
 ARG LOCALE=en_US
 
 # prapare
