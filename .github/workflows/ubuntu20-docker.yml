@@ -1,0 +1,31 @@
+name: ubuntu20-docker-build
+
+on:
+  push:
+    branches:
+      - 'main'
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+
+  ubuntu-20-dev:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build & push Docker image
+        with:
+          image: meta-flutter/ubuntu-20-dev
+          tags: main
+          registry: ghcr.io
+          dockerfile: ubuntu-20-dev/Dockerfile
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
